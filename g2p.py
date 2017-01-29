@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
+
 '''
 g2p.py
 ~~~~~~~~~~
 
 This script converts Korean graphemes to romanized phones and then to pronunciation.
-
     (1) graph2phone: convert Korean graphemes to romanized phones
     (2) phone2prono: convert romanized phones to pronunciation
     (3) graph2phone: convert Korean graphemes to pronunciation
@@ -24,14 +24,23 @@ Last updated: 2017-01-25 Hyungwon Yang, Yejin Cho
     - Executable in both Python 2 and 3.
     - G2P Performance test available ($ python g2p.py test)
     - G2P verbosity control available
-
+    
 '''
 
 import datetime as dt
 import re
 import math
 import sys
+import optparse
 
+
+# Option
+parser = optparse.OptionParser()
+parser.add_option("-v", action="store_true", dest="verbose", default="False",
+                  help="This option prints the detail information of g2p process.")
+
+(options,args) = parser.parse_args()
+verbose = options.verbose
 
 # Check Python version
 ver_info = sys.version_info
@@ -67,8 +76,8 @@ def writefile(body, fname):
     out.close()
 
 
-def readRules(pver, rule_book):
-    f = open(rule_book, 'rb')
+def readRules(pver, rulebook):
+    f = open(rulebook, 'r')
 
     rule_in = []
     rule_out = []
@@ -77,12 +86,9 @@ def readRules(pver, rule_book):
         line = f.readline()
         if pver == 2:
             line = unicode(line.encode("utf-8"))
+            line = re.sub(u'\n', u'', line)
         elif pver == 3:
-            # -----------------------------------
-            print('NB. NEEDS ENCODING TROUBLESHOOTING')
-            # -----------------------------------
-
-        line = re.sub(u'\n', u'', line)
+            line = re.sub('\n', '', line)
 
         if line != u'':
             if line[0] != u'#':
@@ -227,7 +233,7 @@ def addSpace(phones):
     return newphones
 
 
-def graph2prono(graphs, rule_in, rule_out, verbose=False):
+def graph2prono(graphs, rule_in, rule_out):
 
     romanized = graph2phone(graphs)
     romanized_bd = addPhoneBoundary(romanized)
@@ -242,7 +248,7 @@ def graph2prono(graphs, rule_in, rule_out, verbose=False):
     identical = False
     loop_cnt = 1
 
-    if verbose == 1:
+    if verbose == True:
         print ('=> Romanized: ' + romanized)
         print ('=> Romanized with boundaries: ' + romanized_bd)
         print ('=> Initial output: ' + prono)
@@ -295,13 +301,12 @@ def testG2P(rulebook, testset):
     writefile(body,'good.txt')
 
 
-def runKoG2P(graph, rulebook, verbosity):
-    rulebook = 'rulebook.txt'
+def runKoG2P(graph, rulebook):
     [rule_in, rule_out] = readRules(ver_info[0], rulebook)
     if ver_info[0] == 2:
-        prono = graph2prono(unicode(graph), rule_in, rule_out, verbose=verbosity)
+        prono = graph2prono(unicode(graph), rule_in, rule_out)
     elif ver_info[0] == 3:
-        prono = graph2prono(graph, rule_in, rule_out, verbose=verbosity)
+        prono = graph2prono(graph, rule_in, rule_out)
 
     print(prono)
 
@@ -321,12 +326,10 @@ def runTest(rulebook, testset):
 # Usage:
 if __name__ == '__main__':
 
-    if sys.argv[1] == 'test':   # G2P Performance Test
+    if args[0] == 'test':   # G2P Performance Test
         runTest('rulebook.txt', 'testset.txt')
 
     else:
-        graph = sys.argv[1]
-        verbosity = True
-        runKoG2P(graph, 'rulebook.txt', verbosity)
-
+        graph = args[0]
+        runKoG2P(graph, 'rulebook.txt')
 
