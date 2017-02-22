@@ -18,12 +18,10 @@ Hyungwon Yang (hyung8758@gmail.com)
 Yeonjung Hong (yvonne.yj.hong@gmail.com)
 
 Created: 2016-08-11
-Last updated: 2017-01-25 Hyungwon Yang, Yejin Cho
+Last updated: 2017-02-22 Yejin Cho
 
 * Key updates made:
-    - Executable in both Python 2 and 3.
-    - G2P Performance test available ($ python g2p.py test)
-    - G2P verbosity control available
+    - imports rulebook.txt assuming kolm is located in site-packages directory.
     
 '''
 
@@ -32,6 +30,7 @@ import re
 import math
 import sys
 import optparse
+import site
 
 
 # Option
@@ -45,13 +44,10 @@ verbose = options.verbose
 # Check Python version
 ver_info = sys.version_info
 
-try:
-    # Python 2
+if ver_info[0] == 2:
     reload(sys)
     sys.setdefaultencoding('utf-8')
-except NameError:
-    pass
-
+    
 
 def readfileUTF8(fname):
     f = open(fname, 'r')
@@ -298,7 +294,7 @@ def testG2P(rulebook, testset):
             body.append('[result] ' + pred + '\t\t\t[ans] ' + item_in + ' [' + item_out + '] ' + ans)
 
     print('Total error item #: ' + str(cnt))
-    writefile(body,'good.txt')
+    writefile(body, 'good.txt')
 
 
 def runKoG2P(graph, rulebook):
@@ -325,11 +321,14 @@ def runTest(rulebook, testset):
 
 # Usage:
 if __name__ == '__main__':
+    path = site.getsitepackages()[0]
+    rulebook_path = path + '/kog2p/rulebook.txt'
+    testset_path = path + '/kog2p/testset.txt'
 
     if args[0] == 'test':   # G2P Performance Test
-        runTest('rulebook.txt', 'testset.txt')
+        runTest(rulebook_path, testset_path)
 
     else:
         graph = args[0]
-        runKoG2P(graph, 'rulebook.txt')
+        runKoG2P(graph, rulebook_path)
 
