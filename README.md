@@ -3,9 +3,10 @@
 터미널에서 원하는 문자열을 함께 입력해 사용할 수 있습니다.
 
 	$ python g2p.py '열 여덟째 사람'
+</br>
 ## Requirements
 - Python 2.7 or 3
-
+</br>
 ## Symbol table
 | C/V       | Position    | Symbols in Hangul | Symbols in KoG2P |
 |-----------|-------------|-------|-------|
@@ -75,5 +76,5 @@
 | vowel     | diphthong   | ㅘ    | wa    |
 | vowel     | diphthong   | ㅝ    | wv    |
 | vowel     | diphthong   | ㅢ    | xi    |
-
+  
 NB. IPA symbols for Korean phones can be found in the following page: [IPA for Korean](https://en.wikipedia.org/wiki/Help:IPA_for_Korean).   
