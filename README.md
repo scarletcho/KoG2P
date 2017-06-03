@@ -4,9 +4,11 @@
 
 	$ python g2p.py '열 여덟째 사람'
 </br>
+  
 ## Requirements
 - Python 2.7 or 3
 </br>
+  
 ## Symbol table
 | C/V       | Position    | Symbols in Hangul | Symbols in KoG2P |
 |-----------|-------------|-------|-------|
