@@ -1,15 +1,25 @@
 # KoG2P
-한국어의 문자열로부터 발음열을 생성하는 파이썬 기반 G2P 패키지입니다.  
-터미널에서 원하는 문자열을 함께 입력해 사용할 수 있습니다.
+Given an input of a series of Korean graphemes/letters (i.e. Hangul), KoG2P outputs the corresponding pronunciations.
 
-	$ python g2p.py '열 여덟째 사람'
-</br>
+NB. Your input does not necessarily need to be a lemma or a legitimate sequence of Korean; the system will provide an output based on the phonological rules of Korean for any sequence in Hangul.
+
+
+## How to use?
+On terminal, you simply can type in your input within quotations:
+
+	$ python g2p.py '박물관'
+
+Then you'll get /방물관/ symbolized as follows:
+
+	p0 aa ng mm uu ll k0 wa nf
   
-## Requirements
-- Python 2.7 or 3
-</br>
+## Requirement
+- Python 2.7 or 3.x
+
   
 ## Symbol table
+Please check out the symbol table below for the mapping.
+
 | C/V       | Position    | Symbols in Hangul | Symbols in KoG2P |
 |-----------|-------------|-------|-------|
 | consonant | onset       | ㅂ    | p0    |
@@ -80,3 +90,21 @@
 | vowel     | diphthong   | ㅢ    | xi    |
   
 NB. IPA symbols for Korean phones can be found in the following page: [IPA for Korean](https://en.wikipedia.org/wiki/Help:IPA_for_Korean).   
+
+## Reference
+Please cite the following if using this code:
+
+	@misc{cho2017kog2p,
+	  title = {Korean Grapheme-to-Phoneme Analyzer (KoG2P)},
+	  author = {Yejin Cho},
+	  year = {2017},
+	  publisher = {GitHub},
+	  journal = {GitHub repository},
+	  howpublished = {\url{https://github.com/scarletcho/KoG2P}}
+	}
+
+## Thank you for your citations!
+
+- Yoon Seok Hong, Kyung Seo Ki, and Gahgene Gweon. 2018. Automatic Miscue Detection Using RNN Based Models with Data Augmentation. In Proc. Interspeech 2018. 1646-1650. [[pdf](https://www.isca-speech.org/archive/Interspeech_2018/pdfs/1644.pdf)]
+
+- Younggun Lee and Taesu Kim. 2018. Robust and fine-grained prosody control of end-to-end speech synthesis. CoRR 2018, abs/1811.02122. [[pdf](https://arxiv.org/abs/1811.09364)]
