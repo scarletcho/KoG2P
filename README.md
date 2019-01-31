@@ -1,8 +1,8 @@
 # KoG2P
 Given an input of a series of Korean graphemes/letters (i.e. Hangul), KoG2P outputs the corresponding pronunciations.
 
-NB. Your input does not necessarily need to be a lemma or a legitimate sequence of Korean; the system will provide an output based on the phonological rules of Korean for any sequence in Hangul.
-
+한국어의 문자열로부터 발음열을 생성하는 파이썬 기반 G2P 패키지입니다.  
+터미널에서 원하는 문자열을 함께 입력해 사용할 수 있습니다.
 
 ## How to use?
 On terminal, you simply can type in your input within quotations:
@@ -12,6 +12,9 @@ On terminal, you simply can type in your input within quotations:
 Then you'll get /방물관/ symbolized as follows:
 
 	p0 aa ng mm uu ll k0 wa nf
+
+NB. Your input does not necessarily need to be a lemma or a legitimate sequence of Korean; the system will provide an output based on the phonological rules of Korean for any sequence in Hangul.
+
   
 ## Requirement
 - Python 2.7 or 3.x
