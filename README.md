@@ -13,7 +13,7 @@ Then you'll get /방물관/ symbolized as follows:
 
 	p0 aa ng mm uu ll k0 wa nf
 
-NB. Your input does not necessarily need to be a lemma or a legitimate sequence of Korean; the system will provide an output based on the phonological rules of Korean for any sequence in Hangul.
+NB. Your input does not necessarily need to be a lemma or a legitimate sequence of Korean; the system will provide an output based on the phonological rules of Korean for any sequences in Hangul.
 
   
 ## Requirement
