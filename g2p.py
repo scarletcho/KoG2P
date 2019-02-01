@@ -12,13 +12,13 @@ This script converts Korean graphemes to romanized phones and then to pronunciat
 Usage:  $ python g2p.py '스물 여덟째 사람'
         (NB. Please check 'rulebook_path' before usage.)
 
-Yejin Cho (scarletcho@gmail.com)
+Yejin Cho (ycho@utexas.edu)
 Jaegu Kang (jaekoo.jk@gmail.com)
 Hyungwon Yang (hyung8758@gmail.com)
 Yeonjung Hong (yvonne.yj.hong@gmail.com)
 
 Created: 2016-08-11
-Last updated: 2017-02-22 Yejin Cho
+Last updated: 2019-01-31 Yejin Cho
 
 * Key updates made:
     - Executable in both Python 2 and 3.
