@@ -110,4 +110,4 @@ Please cite the following if using this code:
 
 - Yoon Seok Hong, Kyung Seo Ki, and Gahgene Gweon. 2018. Automatic Miscue Detection Using RNN Based Models with Data Augmentation. In Proc. Interspeech 2018. 1646-1650. [[pdf](https://www.isca-speech.org/archive/Interspeech_2018/pdfs/1644.pdf)]
 
-- Younggun Lee and Taesu Kim. 2018. Robust and fine-grained prosody control of end-to-end speech synthesis. CoRR 2018, abs/1811.02122. [[pdf](https://arxiv.org/abs/1811.09364)]
+- Younggun Lee and Taesu Kim. 2018. Learning pronunciation from a foreign language in speech synthesis network. arXiv preprint arXiv:1811.09364. [[pdf](https://arxiv.org/pdf/1811.09364v1.pdf)]
